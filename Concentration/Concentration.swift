@@ -30,14 +30,18 @@ class Concentration {
         if d_cardList[idx].isFaceUp {
             return;
         }
-        d_cardList[idx].isFaceUp = true;
         d_flipCount+=1;
         if let jdx = d_lastCardIndex {
+            d_cardList[idx].isFaceUp = true;
             checkForMatch(idx:idx, jdx:jdx);
             d_lastCardIndex = nil;
         }
         else {
+            for flipdownIndex in d_cardList.indices {
+                d_cardList[flipdownIndex].isFaceUp = false
+            }
             d_lastCardIndex = idx;
+            d_cardList[idx].isFaceUp = true;
         }
     }
     
@@ -48,10 +52,6 @@ class Concentration {
             d_cardList[idx].isMatched = true;
             d_cardList[jdx].isMatched = true;
         }
-        else
-        {
-            d_cardList[idx].isFaceUp = false;
-            d_cardList[jdx].isFaceUp = false;        }
     }
     
     func reset()
@@ -60,6 +60,8 @@ class Concentration {
         for i in 0..<d_cardList.count {
             d_cardList[i].isFaceUp = false
             d_cardList[i].isMatched = false
+
+        
         }
     }
     

@@ -158,11 +158,19 @@
                                     <action selector="resetClicked" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dkt-OQ-OYk"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Count: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpC-Lo-SUQ">
+                                <rect key="frame" x="101" y="553" width="114" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.66788150089999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="flipCountLabel" destination="dpC-Lo-SUQ" id="TZb-u0-oBx"/>
                         <outletCollection property="cardButtons" destination="A74-2a-rgM" collectionClass="NSMutableArray" id="VBD-cz-v20"/>
                         <outletCollection property="cardButtons" destination="Zn3-cx-aX0" collectionClass="NSMutableArray" id="8s2-o8-9lI"/>
                         <outletCollection property="cardButtons" destination="uyv-Wj-cQ7" collectionClass="NSMutableArray" id="Jbq-LE-tUE"/>
