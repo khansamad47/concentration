@@ -11,7 +11,16 @@ import UIKit
 class ViewController: UIViewController
 {
     lazy var game : Concentration = Concentration(numberOfCardPairs: cardButtons.count/2);
-    var emojiList = ["👁","🐸","🦋","🌼","🌍","🌈","🍎","🎾","🚗"];
+    lazy var gameThemeIndex : Int = Int.random(in: 0..<emojiThemes.count)
+    
+    let emojiThemes : Array<Array<String>> = [
+        ["⚽️","🏀","🏈","⚾️","🎾","🏐","🏉","🏒","🏏"],
+        ["😀","☺️","😘","🤪","😞","😫","🤯","😰","😡"],
+        ["🐙","🐳","🦀","🐢","🦋","🙊","🦁","🐷","🐸"],
+        ["🍒","🍎","🍏","🍓","🍊","🍌","🍉","🍅","🥕"],
+        ["🇧🇷","🇨🇮","🇪🇷","🇮🇨","🇧🇯","🇲🇷","🇲🇲","🇱🇹","🇴🇲"],
+        ["💟","☮️","✝️","🛐","♐️","☸️","⚛️","♌️","♉️"],
+    ]
     @IBOutlet var cardButtons: [UIButton]!
     
     @IBAction func touchCard(_ sender: UIButton) {
@@ -22,6 +31,7 @@ class ViewController: UIViewController
     
     @IBAction func resetClicked() {
         game.reset()
+        gameThemeIndex = Int.random(in: 0..<emojiThemes.count)
         updateViewFromModel()
     }
     
@@ -35,7 +45,7 @@ class ViewController: UIViewController
             let button = cardButtons[i]
             if (card.isFaceUp) {
                 button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-                button.setTitle(emojiList[card.id], for: UIControl.State.normal)
+                button.setTitle(emojiThemes[gameThemeIndex][card.id], for: UIControl.State.normal)
             }
             else {
                 button.setTitle("", for: UIControl.State.normal)
@@ -43,10 +53,14 @@ class ViewController: UIViewController
             }
         }
         
-        flipCountLabel.text = "Count: " + String(game.d_flipCount)
+        flipCountLabel.text = "Count:\(game.d_flipCount)"
+        
+        scoreLabel.text = "Score: \(game.d_score)"
     }
     
     @IBOutlet weak var flipCountLabel: UILabel!
+    
+    @IBOutlet weak var scoreLabel: UILabel!
     
 }
 
